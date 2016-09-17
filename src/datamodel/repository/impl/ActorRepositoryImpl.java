@@ -35,7 +35,7 @@ public class ActorRepositoryImpl implements ActorRepository{
     public Actor findById(String id) {
         Actor actor = null;
         try{
-          List<Actor> actors =  em.createNamedQuery("Actor.findByActorId").getResultList();
+          List<Actor> actors =  em.createNamedQuery("Actor.findByActorId").setParameter("actorId", id).getResultList();
           if(!actors.isEmpty()){
               actor = actors.get(0);
           }
@@ -92,6 +92,39 @@ public class ActorRepositoryImpl implements ActorRepository{
         em.clear();
         em.close();
         return null;
+    }
+
+    @Override
+    public Actor findByFirstName(String firstName) {
+        Query query = em.createNamedQuery("Actor.findByFirstName").setParameter("firstName", firstName);
+        Actor actor = null;
+        try{
+        Object obj =  query.getSingleResult();
+        actor = (Actor)obj;
+        }catch(Exception ex){
+            System.out.println("Exception :"+ ex);
+        }
+        
+        return actor;
+    }
+
+    @Override
+    public void update(Actor actor) {
+        transaction.begin();
+        em.merge(actor);
+        transaction.commit();
+        em.clear();
+        em.close();
+    }
+
+    @Override
+    public void delete(Actor actor) {
+        transaction.begin();
+        em.merge(actor);
+        em.remove(actor);
+        transaction.commit();
+        em.clear();
+        em.close();
     }
     
 }

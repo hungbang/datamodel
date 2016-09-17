@@ -22,15 +22,19 @@ public class ActorController {
     }
 
     public void update(Actor actor) {
-        
+        service.update(actor);
     }
 
     public void delete(Actor actor) {
-        
+        service.delete(actor);
     }
 
     public Actor createActor(Actor actor) {
         return service.createActor(actor);
+    }
+
+    public Actor getActorByFirstName(String firstName) {
+        return service.findByFirstName(firstName);
     }
     
 }

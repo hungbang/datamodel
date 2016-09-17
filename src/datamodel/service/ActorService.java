@@ -27,4 +27,10 @@ public interface ActorService {
     public void getAllActor();
 
     public Actor createActor(Actor actor);
+
+    public Actor findByFirstName(String firstName);
+
+    public void update(Actor actor);
+
+    public void delete(Actor actor);
 }

@@ -49,5 +49,20 @@ public class ActorServiceImpl implements ActorService{
     public Actor createActor(Actor actor) {
         return repository.createActor(actor);
     }
+
+    @Override
+    public Actor findByFirstName(String firstName) {
+        return repository.findByFirstName(firstName);
+    }
+
+    @Override
+    public void update(Actor actor) {
+         repository.update(actor);
+    }
+
+    @Override
+    public void delete(Actor actor) {
+        repository.delete(actor);
+    }
     
 }
