@@ -6,6 +6,8 @@
 package datamodel.controller;
 
 import datamodel.model.Actor;
+import datamodel.service.ActorService;
+import datamodel.service.impl.ActorServiceImpl;
 
 /**
  *
@@ -13,8 +15,18 @@ import datamodel.model.Actor;
  */
 public class ActorController {
 
+    private ActorService service = new ActorServiceImpl();
+
+    public ActorService getService() {
+        return service;
+    }
+
+    public void setService(ActorService service) {
+        this.service = service;
+    }
+    
     public void getAllActor() {
-        
+        service.getAllActor();
     }
 
     public void update(Actor actor) {
@@ -23,6 +35,10 @@ public class ActorController {
 
     public void delete(Actor actor) {
         
+    }
+
+    public Actor createActor(Actor actor) {
+        return service.createActor(actor);
     }
     
 }

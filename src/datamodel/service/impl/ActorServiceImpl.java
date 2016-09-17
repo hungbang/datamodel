@@ -5,6 +5,9 @@
  */
 package datamodel.service.impl;
 
+import datamodel.model.Actor;
+import datamodel.repository.ActorRepository;
+import datamodel.repository.impl.ActorRepositoryImpl;
 import datamodel.service.ActorService;
 import datamodel.vo.ActorVO;
 import java.util.List;
@@ -15,6 +18,16 @@ import java.util.List;
  */
 public class ActorServiceImpl implements ActorService{
 
+    private ActorRepository repository = new ActorRepositoryImpl();
+
+    public ActorRepository getRepository() {
+        return repository;
+    }
+
+    public void setRepository(ActorRepository repository) {
+        this.repository = repository;
+    }
+    
     @Override
     public List<ActorVO> findAllActor() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -33,6 +46,16 @@ public class ActorServiceImpl implements ActorService{
     @Override
     public void saveAndUpdate(ActorVO actorVO) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void getAllActor() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Actor createActor(Actor actor) {
+        return repository.createActor(actor);
     }
     
 }

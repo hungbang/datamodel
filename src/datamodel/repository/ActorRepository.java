@@ -21,4 +21,6 @@ public interface ActorRepository {
     public void deleteActor(Actor actor);
     
     public void saveAndUpdate(Actor actor);
+
+    public Actor createActor(Actor actor);
 }

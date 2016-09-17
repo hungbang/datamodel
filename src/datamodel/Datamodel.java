@@ -16,7 +16,7 @@ import java.util.Date;
  * @author KAI
  */
 public class Datamodel {
-    private ActorController controller;
+    private ActorController controller = new ActorController();
 
     public ActorController getController() {
         return controller;
@@ -30,7 +30,13 @@ public class Datamodel {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Actor actor = new Actor();
+        actor.setFirstName("Anh Nhat");
+        actor.setLastName("Nhat Anh");
+        actor.setLastUpdate(new Date());
         
+        Datamodel d = new Datamodel();
+        d.createActor(actor);
         
     }
     
@@ -45,5 +51,9 @@ public class Datamodel {
     
     public void delete(Actor actor){
         controller.delete(actor);
+    }
+    
+    public Actor createActor(Actor actor){
+        return controller.createActor(actor);
     }
 }

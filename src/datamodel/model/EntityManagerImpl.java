@@ -15,7 +15,7 @@ import javax.persistence.EntityManager;
  */
 public class EntityManagerImpl{
     
-    public EntityManager getEntityManager() {
+    public static EntityManager getEntityManager() {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("datamodelPU");
         return factory.createEntityManager();
     }

@@ -11,6 +11,7 @@ import datamodel.repository.ActorRepository;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 /**
  *
@@ -19,7 +20,7 @@ import javax.persistence.EntityTransaction;
 public class ActorRepositoryImpl implements ActorRepository{
 
     
-    private EntityManager em;
+    private EntityManager em = EntityManagerImpl.getEntityManager();
 
     
     public EntityManager getEm() {
@@ -84,6 +85,21 @@ public class ActorRepositoryImpl implements ActorRepository{
         //work with copy of entity, entity can not change after that merge operation.Update entity.
 //        getEntity().entityManager().merge(actor);
 //        commit();
+    }
+
+    @Override
+    public Actor createActor(Actor actor) {
+        transaction.begin();
+        String sqlQuery = "insert into actor(last_name, first_name, last_update) values(?,?,?)";
+        Query query = em.createNativeQuery(sqlQuery);
+        query.setParameter(1, actor.getLastName());
+        query.setParameter(2, actor.getFirstName());
+        query.setParameter(3, actor.getLastUpdate());
+        query.executeUpdate();
+        transaction.commit();
+        em.clear();
+        em.close();
+        return null;
     }
     
 }

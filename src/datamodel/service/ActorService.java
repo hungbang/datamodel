@@ -5,6 +5,7 @@
  */
 package datamodel.service;
 
+import datamodel.model.Actor;
 import datamodel.vo.ActorVO;
 import java.util.List;
 
@@ -22,4 +23,8 @@ public interface ActorService {
     public void deleteActorVO(String id);
     
     public void saveAndUpdate(ActorVO actorVO);
+
+    public void getAllActor();
+
+    public Actor createActor(Actor actor);
 }
