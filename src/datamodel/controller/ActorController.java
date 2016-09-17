@@ -16,14 +16,6 @@ import datamodel.service.impl.ActorServiceImpl;
 public class ActorController {
 
     private ActorService service = new ActorServiceImpl();
-
-    public ActorService getService() {
-        return service;
-    }
-
-    public void setService(ActorService service) {
-        this.service = service;
-    }
     
     public void getAllActor() {
         service.getAllActor();

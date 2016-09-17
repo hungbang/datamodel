@@ -19,14 +19,6 @@ import java.util.List;
 public class ActorServiceImpl implements ActorService{
 
     private ActorRepository repository = new ActorRepositoryImpl();
-
-    public ActorRepository getRepository() {
-        return repository;
-    }
-
-    public void setRepository(ActorRepository repository) {
-        this.repository = repository;
-    }
     
     @Override
     public List<ActorVO> findAllActor() {

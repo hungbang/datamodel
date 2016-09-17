@@ -22,14 +22,6 @@ public class ActorRepositoryImpl implements ActorRepository{
     
     private EntityManager em = EntityManagerImpl.getEntityManager();
 
-    
-    public EntityManager getEm() {
-        return em;
-    }
-    public void setEm(EntityManager em) {
-        EntityManagerImpl emi = new EntityManagerImpl();
-        this.em = emi.getEntityManager();
-    }
     private EntityTransaction transaction = em.getTransaction();
     
     
